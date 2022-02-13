@@ -1,0 +1,23 @@
+{
+  "name": "DSC",
+  "version": "2.1.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "canvas": "^2.5.5",
+    "dgram": "^1.0.1",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "pug": "^3.0.0",
+    "socket.io": "^2.3.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "cover": "istanbul cover _mocha"
+  },
+  "devDependencies": {
+    "mocha": "^7.2.0"
+  }
+}
+

@@ -1,0 +1,38 @@
+#with import <nixpkgs>{};
+{ lib, stdenv, fetchgit, fetchurl, makeWrapper, which, nodejs, mkYarnPackage, python2, nixosTests, pkg-config, pixman, cairo, pango, wget }:
+
+stdenv.mkDerivation rec {
+  name = "dsv";
+  version = "69d483b1d9d4c40261fd4548e6bef681c23ff245";
+
+  src = fetchurl {
+    name = "dsv.tar.xz";
+    url  = "https://gitlab.com/digitalshooting/dsv/-/jobs/artifacts/master/raw/dsv.tar.xz?job=build";
+    sha1 = "12v3qzpw721pz70cm68f19fapng5nxnf";
+  };
+
+  postConfigure = ''
+    mkdir $out
+    tar -xf $src -C $out
+  '';
+
+  #buildPhase = ''
+  #  runHook preBuild
+  #  runHook postBuild
+  #'';
+
+  #distPhase = ''
+  #  runHook preDist
+  #  runHook postDist
+  #'';
+
+  dontInstall = true;
+
+  meta = with lib; {
+    description = "DSV";
+    license = licenses.gpl3;
+    homepage = "https://gitlab.com/digitalshooting/dsv/";
+    maintainers = with maintainers; [ firebug ];
+    platforms = platforms.linux;
+  };
+}
