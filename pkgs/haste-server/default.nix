@@ -23,15 +23,15 @@ mkYarnPackage rec {
   postConfigure = ''
     pwd
     ls -lah
-    ls deps/haste-server
-    rm -R deps/haste-server/node_modules
-    cp -R "$node_modules" deps/haste-server
-    chmod -R u+w deps/haste-server
+    ls deps/haste
+    rm -R deps/haste/node_modules
+    cp -R "$node_modules" deps/haste
+    chmod -R u+w deps/haste
   '';
 
   buildPhase = ''
     runHook preBuild
-    cd deps/haste-server
+    cd deps/haste
     runHook postBuild
   '';
 
